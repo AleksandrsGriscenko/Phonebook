@@ -1,6 +1,5 @@
 package javaschool.app;
 
-
 import asg.cliche.Command;
 
 import java.util.ArrayList;
@@ -27,13 +26,26 @@ public class PhoneBook {
 
     @Command //dobavljaem v opredelljonyj ID telefon
     public void addPhone(int id, String phone) {
-        for (Record r : recordList) {  //giljaem po Recordu i kladem peremennuju v r
+        for (Record r : recordList) {  //guljaem po Recordu i kladem peremennuju v r
             if (r.getId() == id) {   //sravnivaem
                 r.addPhones(phone);   //kladem
                 break;
             }
-
         }
+    }
+
+    @Command  //poisk po imeni
+    public List<Record> find(String str) {
+        str = str.toLowerCase();
+        List<Record> result = new ArrayList<>();
+        for (Record r : recordList) {
+            String name = r.getName().toLowerCase();
+            if (name.contains(str)) {
+                result.add(r);
+            }
+        }
+
+        return result;
     }
 
 
