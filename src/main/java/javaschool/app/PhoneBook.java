@@ -35,24 +35,26 @@ public class PhoneBook {
     }
 
     @Command  //poisk po imeni
-    public List<Record> find(String str) {
+    public void find(String str) {
         str = str.toLowerCase();
         List<Record> result = new ArrayList<>();
         for (Record r : recordList) {
             String name = r.getName().toLowerCase();
-            if (name.contains(str)) {
-                result.add(r);
-            }
-        }
-
-        for (Record r : recordList) {
             String adress = r.getAdress().toLowerCase();
-            if (adress.contains(str)) {
+            if (name.contains(str) || adress.contains(str)) {
                 result.add(r);
             }
         }
-        return result;
     }
+/// poisk v adresse
+    //       for (Record r : recordList) {
+    //          String adress = r.getAdress().toLowerCase();
+    //           if (adress.contains(str)) {
+    //               result.add(r);
+    //          }
+    //   }
+    //      return result;
+    //   }
 
 
 
