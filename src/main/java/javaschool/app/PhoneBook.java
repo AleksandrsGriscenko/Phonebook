@@ -45,8 +45,18 @@ public class PhoneBook {
             }
         }
 
+        for (Record r : recordList) {
+            String adress = r.getAdress().toLowerCase();
+            if (adress.contains(str)) {
+                result.add(r);
+            }
+        }
         return result;
     }
+
+
+
+
 
 
 }
