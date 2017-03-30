@@ -27,6 +27,15 @@ public class PhoneBook {
         recordList.add(n);
     }
 
+    @Command
+    public void setDateRem(String date) {
+        DateRem d = new DateRem();
+        d.setDateRem(date);
+
+        recordList.add(d);
+    }
+
+
 
 
 
