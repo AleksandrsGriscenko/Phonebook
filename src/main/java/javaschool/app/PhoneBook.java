@@ -28,15 +28,13 @@ public class PhoneBook {
     }
 
     @Command
-    public void setTime(String name, String txt, String time) {
+    public void createReminder(String name, String txt, String time) {
         Reminder rem = new Reminder();
         rem.setName(name);
         rem.setNote(txt);
         rem.setTime(time);
-
         recordList.add(rem);
     }
-
 
 
 
@@ -62,12 +60,9 @@ public class PhoneBook {
     public void find(String str) {
         str = str.toLowerCase();
 
-
         List<Record> result = new ArrayList<>();
         for (Record r : recordList) {
             String name = r.getName().toLowerCase();
-
-
             String adress;
             if (r instanceof Person) {
                 Person p = (Person) r;
@@ -75,8 +70,6 @@ public class PhoneBook {
             } else {
                 adress = "";
             }
-
-
             if (name.contains(str) || adress.contains(str)) {
                 result.add(r);
             }

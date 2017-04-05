@@ -19,8 +19,10 @@ public class Note extends Record {
         return getId() + ". " + getName() + " " + " " + " " + getNote();
     }
 
-
-
+    @Override
+    public boolean contains(String str) {
+        return super.contains(str) || note.contains(str);
+    }
 }
 
 

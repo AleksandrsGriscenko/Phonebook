@@ -35,5 +35,11 @@ public class Person extends Record {
         return getId() + ". " + getName() + " " + " " + adress + phones;
     }
 
+    @Override
+    public boolean contains(String str) {
+        return super.contains(str) || adress.contains(str);
 
+
+    }
 }
+
