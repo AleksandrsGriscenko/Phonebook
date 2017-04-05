@@ -1,19 +1,19 @@
 package javaschool.app;
 
-class DateRem extends Note {
-    private String dateRem;
+public class Reminder extends Note {
+    private String time;
 
-    public String getDateRem() {
-        return dateRem;
+    public String getTime() {
+        return time;
     }
 
-    public void setDateRem(String getRem) {
-        this.dateRem = dateRem;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     @Override   //otobrozhaet stroku
     public String toString() {
-        return getId() + ". " + getName() + " " + " " + " " + getNote()+ " " +getDateRem();
+        return getId() + ". " + getName() + " " + " " + " " + getNote() + " " + time;
     }
 
 

@@ -77,7 +77,10 @@ public class PhoneBook {
 
             if (name.contains(str) || adress.contains(str)) {
                 result.add(r);
-            }// else {
+            }
+
+
+            // else {
             //   for (String p : r.getPhones()) {
             //      p = p.toLowerCase();
             //      if (p.contains(str)) {
