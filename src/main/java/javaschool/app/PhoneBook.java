@@ -37,8 +37,6 @@ public class PhoneBook {
     }
 
 
-
-
     @Command
     public List<Record> list() {
         return recordList;
@@ -56,24 +54,18 @@ public class PhoneBook {
         }
     }
 
-    @Command  //poisk po imeni
-    public void find(String str) {
+    @Command  // metod poiska po imeni
+    public List<Record> find(String str) {
         str = str.toLowerCase();
-
         List<Record> result = new ArrayList<>();
         for (Record r : recordList) {
-            String name = r.getName().toLowerCase();
-            String adress;
-            if (r instanceof Person) {
-                Person p = (Person) r;
-                adress = p.getAdress().toLowerCase();
-            } else {
-                adress = "";
-            }
-            if (name.contains(str) || adress.contains(str)) {
+            if (r.contains(str)) {
                 result.add(r);
             }
-
+        }
+        return result;
+    }
+}
 
             // else {
             //   for (String p : r.getPhones()) {
@@ -84,8 +76,8 @@ public class PhoneBook {
             //     }
             //  }
             ///  }
-        }
-    }
+
+
 /// poisk v adresse
     //       for (Record r : recordList) {
     //          String adress = r.getAdress().toLowerCase();
@@ -101,4 +93,3 @@ public class PhoneBook {
 
 
 
-}
