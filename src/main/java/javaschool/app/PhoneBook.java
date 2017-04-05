@@ -28,11 +28,13 @@ public class PhoneBook {
     }
 
     @Command
-    public void setDateRem(String date) {
-        DateRem d = new DateRem();
-        d.setDateRem(date);
+    public void setTime(String name, String txt, String time) {
+        Reminder rem = new Reminder();
+        rem.setName(name);
+        rem.setNote(txt);
+        rem.setTime(time);
 
-        recordList.add(d);
+        recordList.add(rem);
     }
 
 
