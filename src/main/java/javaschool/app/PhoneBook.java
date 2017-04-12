@@ -2,12 +2,12 @@ package javaschool.app;
 
 import asg.cliche.Command;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PhoneBook {
+    private Map<Integer, Record> recordList = new HashMap<>();
+    private NavigableMap<String, Record> indexByName = new TreeMap<>();
 
-    private List<Record> recordList = new ArrayList();
 
     @Command
     public void createPerson(String name, String adress, String... phones) {
@@ -15,16 +15,20 @@ public class PhoneBook {
         r.setName(name);
         r.setAdress(adress);
         r.addPhones(phones);
-
-        recordList.add(r);  //Sohranjaem
+        recordList.put(r.getId(), r);  //Sohranjaem
+        indexByName.put(r.getName(), r);
     }
+
+///    @Command
+////    public Collection <Record> findAfter(String, str) {
+///}
 
     @Command
     public void createNote(String name, String note) {
         Note n = new Note();
         n.setNote(note);
         n.setName(name);
-        recordList.add(n);
+        recordList.put(n.getId(), n);
     }
 
     @Command
@@ -33,19 +37,19 @@ public class PhoneBook {
         rem.setName(name);
         rem.setNote(txt);
         rem.setTime(time);
-        recordList.add(rem);
+        recordList.put(rem.getId(), rem);
     }
 
 
     @Command
-    public List<Record> list() {
-        return recordList;
+    public Collection<Record> list() {
+        return recordList.values();
     }
 
 
     @Command //dobavljaem v opredelljonyj ID telefon
     public void addPhone(int id, String phone) {
-        for (Record r : recordList) {  //guljaem po Recordu i kladem peremennuju v r
+        for (Record r : recordList.values()) {  //guljaem po Recordu i kladem peremennuju v r
             if (r instanceof Person && r.getId() == id) {   //sravnivaem    instanceof-proverjaem evljaetsja li on kem-to
                 Person p = (Person) r;   //Privedenie tipa
                 p.addPhones(phone);   //kladem
@@ -58,13 +62,22 @@ public class PhoneBook {
     public List<Record> find(String str) {
         str = str.toLowerCase();
         List<Record> result = new ArrayList<>();
-        for (Record r : recordList) {
+        for (Record r : recordList.values()) {
             if (r.contains(str)) {
                 result.add(r);
             }
         }
         return result;
     }
+
+    @Command
+    public Record show(int id) {
+        return recordList.get(id);
+    }
+
+
+
+
 }
 
             // else {
